@@ -1,0 +1,24 @@
+qualifiers<-c("Uruguay", "Russia","Spain", "Portugal", "France","Denmark","Croatia", "Argentina","Brazil","Switzerland","Sweden","Mexico","Belgium","England","Japan","Colombia") 
+
+score<-c(9,6,5,5,7,5,9,4,7,5,6,6,9,6,6,4)
+
+performance<-data.frame(qualifiers,win*3,tie,lose,score)
+
+sort(score,decreasing=TRUE)
+
+score<-score[c(1,7,13,5,9,2,11,12,14,15,3,4,6,10,8,16)]
+
+performance<-performance[c(1,7,13,5,9,2,11,12,14,15,3,4,6,10,8,16),]
+
+levels=performance$qualifiers[order(performance$score)]
+
+continent<-factor(continent)
+
+performance<-data.frame(performance,Continent=continent)
+
+ggplot(performance,aes(y=score,x=qualifiers,fill=continent))
++geom_bar(stat="identity")
++scale_fill_manual(values = wes_palette("GrandBudapest2"))
++theme_minimal()+labs(y="Points Accumulated",x="Top 16 Countries",title="Group Knock Out Stage")
++theme(text=element_text(family="Helvetica", size=12))+ylim(c(0,9)) 
+
