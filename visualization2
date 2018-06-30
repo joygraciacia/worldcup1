@@ -1,0 +1,13 @@
+qualifiers<-c("Uruguay", "Russia","Spain", "Portugal", "France","Denmark","Croatia", "Argentina","Brazil","Switzerland","Sweden","Mexico","England","Belgium","Japan","Colombia") 
+
+cups<-c(2,0,1,0,1,0,0,2,5,0,0,0,1,0,0,0)
+
+games<-c(12,3,14,6,14,5,5,16,20,11,11,15,17,12,5,6)
+
+continent<-c("South America","Europe and Asia","Europe","Europe","Europe","Europe","Europe","South America","South America","Europe","Europe","South America","Europe","Europe","Asia","South America")
+
+history<-data.frame(qualifiers,cups,games,continent)
+
+ggplot(history,aes(x=games,y=cups,col=continent))
++geom_point()+scale_fill_manual(values = wes_palette("GrandBudapest1"))
++theme_minimal()
